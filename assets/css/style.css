@@ -5,11 +5,19 @@
 }
 
 html {
-    font-size: 62%;
+    font-size: 52%;
 }
 
 body {
     width: 100%;
+}
+
+/*img logo site*/
+/*pas de height sinon l'img s'étire*/
+#logo {
+    width: 10%;
+    position:absolute;
+    margin: 10px;
 }
 
 /*le menu*/
@@ -38,7 +46,6 @@ body {
 
 /*animation a*/
 a {
-
     background: linear-gradient(to top, peachpuff 0%, peachpuff 4px,transparent 5px);
     background-size: 0 100%;
     transition: backgroud-size 0.5s;
@@ -56,11 +63,8 @@ a:hover {
     width: 100%;
 }
 
-/*img logo site*/
-#logo {
-    height: 16em;
-    width: 23em;
-    position:absolute;
-    margin: 10px;
+/*backgrd container*/
+#background-menu {
+    width: 100%;
 }
 

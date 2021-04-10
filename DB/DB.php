@@ -3,7 +3,7 @@
 class DB
 {
     private string $host = 'localhost';
-    private string $db = 'chat';
+    private string $db = 'eval';
     private string $user = 'root';
     private string $password = 'dev';
     private static ?PDO $dbInstance = null;

@@ -1,9 +1,9 @@
 <?php
 require_once "Include.php";
 //if user 's email is already existing it is ok, if not, it is sent back to the home page to create a new one by exemple
-if(!empty($_POST)&&($_POST['email']) && !empty($_POST['email'])) {
+if(isset($_POST['email'])) {
     session_start();
-    $_SESSION["email"] ===[$_POST['email']];
+    $_SESSION["email"] = $_POST['email'];
     header("location:index.php");
 }
 
@@ -12,18 +12,17 @@ if(!empty($_POST)&&($_POST['email']) && !empty($_POST['email'])) {
 
 
 ?>
-<div id="frieze">
-    <img id="img1" src="assets/img/frieze.jpg" alt="beaux chatons">
-</div>
 <div id="tchat">
 
     <!--ALL TCHAT here-->
     <form method="POST" action="index.php">
         Message :
-        <label for="message">
-            <textarea name="message" id="message"></textarea><br>
-        </label>
-        <input type="submit" name="submit" value="Envoyez votre message !" id="envoi" />
+        <div id="message">
+            <label for="message">
+                <textarea name="message" id="message"></textarea><br>
+            </label>
+        </div>
+        <input type="submit" name="submit" value="Envoyez votre message !" id="send" />
     </form>
 
 </div>

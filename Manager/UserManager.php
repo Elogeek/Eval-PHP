@@ -3,6 +3,7 @@
 namespace App\Manager;
 use App\Entity\User;
 use PDO;
+use DB;
 class UserManager
 {
     private UserManager $userManager;
@@ -64,7 +65,7 @@ class UserManager
         $request->bindParam(':id', $id);
         $request->execute();
         if ($request->execute() !== false) {
-            echo "it's ok, le tchatteur/la tchatteusse est supprimé/e";
+            echo "it's ok, votre compte est supprimé";
         }
         return $this->deleteUser($id);
     }

@@ -1,4 +1,4 @@
-const form = document.querySelector('#user-add-button');
+const form = document.querySelector('#userAddBtn');
 const submitButton = form.querySelector('button[type="submit"]');
 
 

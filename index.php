@@ -30,7 +30,7 @@ require_once "Include.php";
             <label for="email">mon label</label>
             <input type="text" placeholder="email" required>
             <input type="text" placeholder="password" required>
-            <button type="submit" class="user_add_button">OK !</button>
+            <button type="submit" class="userAddBtn">OK !</button>
         </form>
     </div>
     <div class="fondContainer">

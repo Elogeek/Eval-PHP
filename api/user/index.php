@@ -1,13 +1,10 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/DB/DB.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Entity/Message.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Entity/User.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Manager/UserManager.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Manager/MessageManager.php';
 
 
 use App\Entity\User;
-use App\Manager\MessageManager;
 use App\Manager\UserManager;
 
 header('Content-Type: application/json');
@@ -20,11 +17,10 @@ switch ($requestType) {
     case 'GET':
         if (isset($_GET['id']))
             echo getUser($manager, intval($_GET['id']));
-        else {
+        else
             echo getUser($manager);
-        }
         break;
-    // Add user.
+    // Ajout d'un nouvel user.
     case 'POST':
         // PRéparation de la réponse.
         $response = [
@@ -50,9 +46,7 @@ switch ($requestType) {
         }
         echo json_encode($response);
         break;
-    // Modification d'un user.
-    case 'PUT':
-        break;
+    // supprimer un  user
     case 'DELETE':
         break;
     default:
@@ -64,20 +58,19 @@ switch ($requestType) {
  * @param UserManager $manager
  * @return false|string
  */
-function getStudents(UserManager $manager): string
+function getUsers(UserManager $manager): string
 {
     $response = [];
-    // Obtention des users.
+    // Obtention des students.
     $data = $manager->getUsers();
     foreach ($data as $user) {
         /* @var User $user */
         $response[] = [
             'id' => $user->getId(),
-            'email' => $user->getEmail(),
-            'password' => $user->getPassword(),
+            'email' => $email->getEmail(),
         ];
     }
-    // Envoi de la réponse (format json ).
+    // Envoi de la réponse ( on encode notre tableau au format json ).
     return json_encode($response);
 }
 
@@ -89,11 +82,10 @@ function getStudents(UserManager $manager): string
  */
 function getUser(UserManager $manager, int $id): string
 {
-    $user = $manager->getUsers();
+    $student = $manager->getUsers();
     $response = [
-        'id' => $user->id(),
-        'email' => $user->email(),
-        'password' => $user->password(),
+        'id' => $id->getId(),
+        'email' => $email->getEmail(),
     ];
 
     return json_encode($response);

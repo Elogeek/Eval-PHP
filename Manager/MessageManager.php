@@ -13,14 +13,14 @@ class MessageManager
         $this->db = DB::getInstance();
     }
 
-    /** Return message based id
+    /** Return message based in user_fk ( list message one user)
      * @param int $id
      * @return Message
      */
 
     public function getMessages(int $id): Message {
 
-    $request = DB::getInstance()->prepare("SELECT * FROM messages WHERE id=:id");
+    $request = DB::getInstance()->prepare("SELECT * FROM messages WHERE id=:id AND user_fk = :user_fk");
     $request->bindValue(':id', $id);
     $request->execute();
     $message_data = $request->fetch();
@@ -35,7 +35,6 @@ class MessageManager
 
     }
 
-
     /** Edit a message (spelling mistake,....)
      * @param string $date
      * @param int $id
@@ -44,7 +43,7 @@ class MessageManager
 
     public function editMessage(string $date, int $id) : array {
         $mess = [];
-        $request = DB::getInstance()->prepare("UPDATE messages SET date = :date WHERE id = :id");
+        $request = DB::getInstance()->prepare("UPDATE messages SET id = :id WHERE  user_fk = :user_fk");
         $request->execute();
         $messageGood = $request->fetchAll();
 
@@ -54,18 +53,6 @@ class MessageManager
             }
         }
         return $mess;
-    }
-
-    /**
-     * @param int $id
-     * @return mixed|null
-     */
-    public function getUserFk(int $id){
-        $conn = $this->db->prepare("SELECT user_fk From messages INNER JOIN user ON user.id");
-        if($conn->execute()){
-            return $conn->fetch()["user_fk"];
-        }
-        return null;
     }
 
     /** Send a message
@@ -83,24 +70,8 @@ class MessageManager
         $conn->bindValue(":content", $message->getContent());
         $conn->bindValue(":date", $message->getDate());
         $conn->execute();
-        $id = $this->db->lastInsertId();
+        $this->db->lastInsertId();
 
-    }
-
-    /** Delete  a message based user_fk
-     *(if the user is no longer there, then we delete the messages he wrote)
-     * @param int $user_fk
-     * @return bool
-     */
-    public function deleteMessage(int $user_fk): bool {
-
-        $request = DB::getInstance()->prepare("DELETE FROM messages WHERE user_fk = :user_fk");
-        $request->bindParam(':user_fk', $user_fk);
-        $request->execute();
-        if ($request->execute() !== false) {
-            echo "les messages de cet utilisateur ne sont plus disponibles !";
-        }
-        return $this->deleteMessage($user_fk);
     }
 
 }

@@ -55,6 +55,11 @@ a:hover {
     background-size: 100% 100%;
 }
 
+/*form inscripttion/connect*/
+.fromConnect {
+    display: none;
+}
+
 .fondContainer {
     position: relative;
     top:0;
@@ -68,12 +73,12 @@ a:hover {
     width: 100%;
 }
 
-#frieze img {
-    width: 50%;
+/*liste users*/
+#users {
+    position: relative;
 }
-
-#img1 {
-    float: left;
+#users button {
+    top:15px;
 }
 
 /*Design tchat*/
@@ -81,4 +86,3 @@ a:hover {
     background-color: #ffc19d;
     height: 60vh;
 }
-

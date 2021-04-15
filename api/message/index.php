@@ -1,70 +1,41 @@
 <?php
 
-session_start();
-
 require_once $_SERVER['DOCUMENT_ROOT'] . '/DB/DB.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Entity/Message.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Manager/MessageManager.php';
-
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Entity/User.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Manager/UserManager.php';
 
-use App\Entity\Message;
-use App\Manager\MessageManager;
+
 use App\Entity\User;
 use App\Manager\UserManager;
 
 header('Content-Type: application/json');
 
 $requestType = $_SERVER['REQUEST_METHOD'];
-$managerMessage = new MessageManager();
-$userManager = new UserManager();
+$manager = new UserManager();
 
 switch($requestType) {
+    // Obtention d'informations.
     case 'GET':
-        if(isset($_GET["getUser"]) && $_GET["getUser"] === "1"){
-            echo sendUserSession();
-        }
-        else {
-            echo getMessages($managerMessage, $userManager);
-        }
-        break;
-    case 'POST':
-        $data = json_decode(file_get_contents('php://input'));
-        sendMessage($managerMessage,$data->user,$data->message);
+        echo getUsers($manager);
         break;
     default:
         break;
 }
 
 /**
- * @param MessageManager $managerMessage
- * @param UserManager $managerUser
- * @return string
+ * Return the schools list.
+ * @param UserManager $manager
+ * @return false|string
  */
-function getMessages(MessageManager $managerMessage, UserManager $userManager): string {
+function getUsers(UserManager $manager): string {
     $response = [];
-    // Obtention des messages.
-    $data = $managerMessage->getMessages();
-    foreach($data as $message) {
-        /* @var Message $message*/
+    // Obtention des students.
+    $data = $manager->getUsers();
+    foreach($data as $user) {
+        /* @var user $user */
         $response[] = [
-            'id' => $message->getId(),
-            'date' => $message->getDate(),
-            'user_fk' => $message->getUserFk(),
-            'content' =>$message->getContent(),
+            'id' => $user->getEmail(),
         ];
     }
-    // Envoi de la réponse ( en format json ).
     return json_encode($response);
 }
-
-function sendMessage(MessageManager $managerMessage, int $id, string $message) {
-    $managerMessage->sendMessages($message, $id);
-}
-
-function sendUserSession(){
-    return json_encode(["user" => $_SESSION["user"]]);
-}
-
-exit;

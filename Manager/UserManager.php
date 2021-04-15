@@ -55,20 +55,4 @@ class UserManager
         return intval(DB::getInstance()->lastInsertId()) !== 0;
     }
 
-    /** Delete one user based in the database
-     * @param int $id
-     * @return bool
-     */
-    public function deleteUser(int $id): bool
-    {
-        $request = DB::getInstance()->prepare("DELETE FROM user WHERE id = :id");
-        $request->bindParam(':id', $id);
-        $request->execute();
-        if ($request->execute() !== false) {
-            echo "it's ok, votre compte est supprimé";
-        }
-        return $this->deleteUser($id);
-    }
-
-
 }

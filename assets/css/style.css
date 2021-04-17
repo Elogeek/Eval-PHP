@@ -60,7 +60,7 @@ a:hover {
     display: none;
 }
 
-.fondContainer {
+.backContainer {
     position: relative;
     top:0;
     left: 0;
@@ -72,6 +72,7 @@ a:hover {
 #background-menu {
     width: 100%;
 }
+
 
 /*liste users*/
 #users {

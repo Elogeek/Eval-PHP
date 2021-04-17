@@ -49,6 +49,7 @@ a {
     background: linear-gradient(to top, #03989e 0%, #ffc19d 4px,transparent 5px);
     background-size: 0 100%;
     transition: backgroud-size 0.5s;
+    font-size: large;
 }
 
 a:hover {

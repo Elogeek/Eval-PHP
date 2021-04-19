@@ -18,6 +18,7 @@ body {
     width: 10%;
     position:absolute;
     margin: 10px;
+    z-index: 1000;
 }
 
 /*le menu*/
@@ -39,9 +40,12 @@ body {
 }
 
 #menuContainer a {
-    color: white;
+    color: purple;
     font-weight: bold;
     text-decoration-line: none;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
 }
 
 /*animation a*/
@@ -56,29 +60,24 @@ a:hover {
     background-size: 100% 100%;
 }
 
-/*form inscripttion/connect*/
-.fromConnect {
+/* inscription/connect*/
+.connect {
     display: none;
 }
-
+/*
 .backContainer {
     position: relative;
     top:0;
     left: 0;
     z-index: -1000;
-    width: 100%;
+
 }
-
-/*backgrd container*/
-#background-menu {
-    width: 100%;
-}
-
-
+*/
 /*liste users*/
 #users {
     position: relative;
 }
+
 #users button {
     top:15px;
 }
@@ -87,4 +86,7 @@ a:hover {
 #tchat {
     background-color: #ffc19d;
     height: 60vh;
+    position: relative;
+    top: 25rem;
+    width: 101%;
 }

@@ -72,6 +72,5 @@ class MessageManager
         $conn->execute();
         $this->db->lastInsertId();
 
-    }
 
 }

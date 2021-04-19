@@ -14,46 +14,43 @@ require_once "Include.php";
 <body>
 <!--header-->
 <div class="menu">
+
     <img src="assets/img/logo.png" alt="logoSite" id="logo">
     <div id="menuContainer">
 
-        <a href="#" class="text" id="user-add-button">S'inscrire</a>
-        <form class="fromConnect" method="post">
-            <label for="email"></label>
-            <input type="text" placeholder="email" required>
-            <input type="text" placeholder="password" required>
-            <button type="submit" class="user_add_button">OK !</button>
-        </form>
+        <a href="#" class="userAddBtn">S'inscrire</a>
+        <div class="connect">
+            <input type="email" placeholder="email" required>
+            <input type="password" placeholder="password" required>
+            <button type="submit" class="userAddBtn">OK !</button>
+        </div>
 
         <a href="#" class="text">Se connecter</a>
-        <form class="fromConnect" method="post">
-            <label for="email">mon label</label>
-            <input type="text" placeholder="email" required>
-            <input type="text" placeholder="password" required>
-            <button type="submit" class="userAddBtn">OK !</button>
-        </form>
+        <div class="connect">
+            <input type="email" placeholder="email" required>
+            <input type="password" placeholder="password" required>
+            <button type="submit" class="">OK !</button>
+        </div
     </div>
     <div class="BackContainer">
         <img src="assets/img/back.png" alt="background-Container" id="background-menu">
 
     </div>
+
 </div>
 
 <div id="tchat">
+
     <!--Users listes-->
     <div id="users">
-        <button id="users-list" class="btn btn-rounded btn-primary">Liste des utilisateurs</button>
-        <table style="display: none" id="user-list-content" class="table">
-            <thead>
-            <tr>
-                <th>Email</th>
+        <button id="usersList" class="btn btn-rounded btn-primary">Liste des utilisateurs</button>
+        <!--list users tchat-->
+        <div>
+            <table>
+                <tbody id="#usersListContent">
 
-            </tr>
-            </thead>
-
-        </table>
-        <div style="display: none" id="user-content">
-
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -64,6 +61,9 @@ require_once "Include.php";
             <label for="message">
                 <textarea name="message" id="message" placeholder="Message" maxlength="500"></textarea><br>
             </label>
+            <!--display messages chat here-->
+            <div class="message"></div>
+
         </div>
         <input type="submit" name="submit" value="Envoyez votre message !" id="send" />
     </form>

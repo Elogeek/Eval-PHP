@@ -18,7 +18,9 @@ require_once "Include.php";
 <div id="container">
     <!--header-->
     <div class="menu">
-
+        <div class="cat">
+            <img src="/assets/img/back.png" alt="cat" id="cat">
+        </div>
         <img src="assets/img/logo.png" alt="logoSite" id="logo">
 
         <div id="menuContainer">

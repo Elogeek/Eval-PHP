@@ -5,7 +5,7 @@
 }
 
 html {
-    font-size: 52%;
+    font-size: 62.5%;
 }
 
 body {
@@ -31,9 +31,16 @@ body {
     position: relative;
 }
 
-.menu {
-   background-image: url("/assets/img/back.png");
-   background-size: cover;
+.cat {
+    position: absolute;
+}
+
+/*image*/
+#cat {
+    width: 70rem;
+    top: 2rem;
+    position: absolute;
+    left: 42rem;
 }
 
 /*sous-menu*/
@@ -42,30 +49,10 @@ body {
     letter-spacing: 0.2rem;
     margin: 10px;
     right: 5px;
-
 }
 
-#menuContainer a {
-    color: white;
-    background-color: transparent;
-    font-weight: bold;
-    font-size: 3rem;
-    text-decoration-line: none;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-end;
-}
-
-/*animation a*/
-a {
-    background: linear-gradient(to top, #03989e 0%, purple 5px, transparent 5px);
-    background-size: 0 100%;
-    transition: backgroud-size 0.5s;
-    font-size: large;
-}
-
-a:hover {
-    background-size: 100% 100%;
+#menuContainer, #windowConnect {
+    font-size: 2rem;
 }
 
 /* inscription/connection*/
@@ -87,6 +74,7 @@ a:hover {
      position: relative;
      bottom: 5rem;
      left: 45rem;
+     font-size: 2rem;
 }
 
  #messageToSend {
@@ -97,14 +85,16 @@ a:hover {
      position: relative;
      left: 45rem;
      padding: 1rem;
+     font-size: 2rem;
  }
 
 /*Design tchat*/
 #tchat {
     background-color: #ffc19d;
     position: relative;
-    top: 103rem;
+    top: 36rem;
     width: 100%;
+    font-size: 2rem;
 }
 
 /*affichage des messsages*/
@@ -131,34 +121,9 @@ a:hover {
         background-color: white;
     }
 
-    #menuContainer a {
-        color: #ffc19d;
-        font-size: 2rem;
-        background-color: transparent;
-        font-weight: bold;
-        text-decoration-line: none;
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: flex-end;
-        margin: 2rem;
-    }
-
-    a {
-        background: linear-gradient(to top, white 0%, #03989e 5px, transparent 5px);
-        background-size: 0 100%;
-        /*opacity: 0.33;*/
-        transition: backgroud-size 0.5s;
-        font-size: large;
-    }
-
-    a:hover {
-        background-size: 100% 100%;
-    }
-
-
     #tchat {
         width: 100%;
-        top: 17rem;
+        top: 32rem;
         position: relative;
         background-color: #ffc19d;
     }
@@ -190,4 +155,9 @@ a:hover {
         width: 91%;
         justify-content: center;
     }
+
+    #cat {
+        display: none;
+    }
+
 }

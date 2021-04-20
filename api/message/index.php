@@ -1,23 +1,50 @@
 <?php
+session_start();
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/DB/DB.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Entity/User.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Manager/UserManager.php';
-
+require_once $_SERVER['DOCUMENT_ROOT'] . '/Include.php';
 
 use App\Entity\User;
+use App\Manager\MessageManager;
 use App\Manager\UserManager;
+
+// FIXME To remove once users are implemented.
+$user = new User();
+$user->setId(1);
+// Delete lines 10 and 11 once all updated.
+
 
 header('Content-Type: application/json');
 
 $requestType = $_SERVER['REQUEST_METHOD'];
-$manager = new UserManager();
+$manager = new MessageManager();
+$data = file_get_contents('php://input');
+$data = json_decode($data);
 
 switch($requestType) {
-    // Obtention d'informations.
+
+    // Obtention des messages.
     case 'GET':
-        echo getUsers($manager);
+        $messages = $manager->getMessages();
+        $response = [];
+        foreach($messages as $message) {
+            $response[] = [
+                'id' => $message->getId(),
+                'date' => $message->getDate(),
+                'user_fk' => $message->getUserFk(),
+                'content' => $message->getContent()
+            ];
+        }
+        echo json_encode($response);
         break;
+
+    // Ajout d'un message.
+    case 'POST':
+        $result = $manager->sendMessages($data->message, $user);
+        if(!$result) {
+            echo json_encode(["error" => "Erreur d'envoi du message"]);
+        }
+        break;
+
     default:
         break;
 }

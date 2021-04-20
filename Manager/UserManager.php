@@ -1,22 +1,15 @@
 <?php
 
 namespace App\Manager;
+
 use App\Entity\User;
 use PDO;
 use DB;
+
 class UserManager
 {
-    private UserManager $userManager;
-
     /**
-     * UserManager constructor.
-     */
-    public function __construct()
-    {
-        $this->userManager = new UserManager();
-    }
-
-    /** Return all user
+     * Return all user
      * @return array
      */
     public function getUsers(): array
@@ -24,14 +17,12 @@ class UserManager
         $users = [];
         $request = DB::getInstance()->prepare("SELECT * FROM user");
         $request->execute();
-        $users_response = $request->fetchAll();
 
-        if ($users_response) {
+        if ($users_response = $request->fetchAll()) {
             foreach ($users_response as $data) {
                 $users[] = new User($data['id'], $data['email'], $data['password']);
             }
         }
-
         return $users;
     }
 
@@ -45,13 +36,14 @@ class UserManager
     public function addUser(int $id, string $email, string $password): bool
     {
         $request = DB::getInstance()->prepare("
-            INSERT INTO user (id, email, password)
-            VALUES (:id, :email, :password)
+            INSERT INTO user (email, password)
+                VALUES (:email, :password)
         ");
-        $request->bindParam(':id', $id);
+        $password = password_hash($password, PASSWORD_BCRYPT);
         $request->bindParam(':email', $email);
         $request->bindParam(':password', $password, PDO::PARAM_INT);
         $request->execute();
+
         return intval(DB::getInstance()->lastInsertId()) !== 0;
     }
 

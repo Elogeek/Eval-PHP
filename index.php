@@ -34,7 +34,6 @@ require_once "Include.php";
     </div>
     <div class="BackContainer">
         <img src="assets/img/back.png" alt="background-Container" id="background-menu">
-
     </div>
 
 </div>
@@ -47,27 +46,24 @@ require_once "Include.php";
         <!--list users tchat-->
         <div>
             <table>
-                <tbody id="#usersListContent">
-
-                </tbody>
+                <tbody id="#usersListContent"></tbody>
             </table>
         </div>
     </div>
 
     <!--ALL TCHAT here-->
     <form method="POST" action="">
-
         <div id="message">
-            <label for="message">
-                <textarea name="message" id="message" placeholder="Message" maxlength="500"></textarea><br>
-            </label>
+            <textarea name="message" id="messageToSend" placeholder="Message" maxlength="500"></textarea>
             <!--display messages chat here-->
             <div class="message"></div>
-
         </div>
-        <input type="submit" name="submit" value="Envoyez votre message !" id="send" />
+        <input type="submit" name="submit" value="Envoyez votre message !" id="sendMessage" />
     </form>
 
 </div>
 
 
+<script src="assets/js/app.js"></script>
+</body>
+</html>

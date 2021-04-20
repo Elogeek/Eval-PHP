@@ -5,7 +5,7 @@ class DB
     private string $host = 'localhost';
     private string $db = 'eval';
     private string $user = 'root';
-    private string $password = 'dev';
+    private string $password = '';
     private static ?PDO $dbInstance = null;
 
     /**

@@ -28,6 +28,12 @@ body {
     flex-flow: row nowrap;
     width: 100%;
     top:0;
+    position: relative;
+}
+
+.menu {
+   background-image: url("/assets/img/back.png");
+   background-size: cover;
 }
 
 /*sous-menu*/
@@ -40,8 +46,10 @@ body {
 }
 
 #menuContainer a {
-    color: purple;
+    color: white;
+    background-color: transparent;
     font-weight: bold;
+    font-size: 3rem;
     text-decoration-line: none;
     display: flex;
     flex-flow: row nowrap;
@@ -50,7 +58,7 @@ body {
 
 /*animation a*/
 a {
-    background: linear-gradient(to top, #03989e 0%, #ffc19d 4px,transparent 5px);
+    background: linear-gradient(to top, #03989e 0%, purple 5px, transparent 5px);
     background-size: 0 100%;
     transition: backgroud-size 0.5s;
     font-size: large;
@@ -60,33 +68,126 @@ a:hover {
     background-size: 100% 100%;
 }
 
-/* inscription/connect*/
-.connect {
+/* inscription/connection*/
+.connect, .windowConnect {
     display: none;
 }
-/*
-.backContainer {
-    position: relative;
-    top:0;
-    left: 0;
-    z-index: -1000;
 
-}
-*/
-/*liste users*/
-#users {
+/*buttons
+#usersList {
+    margin-left: 69rem;
     position: relative;
+    bottom: -4rem;
+    right: 15rem;
+
+}*/
+
+ #sendMessage {
+    margin-left: 0;
+     position: relative;
+     bottom: 5rem;
+     left: 45rem;
 }
 
-#users button {
-    top:15px;
-}
+ #messageToSend {
+     margin: 2rem;
+     width: 25%;
+     height: 9rem;
+     overflow: auto;
+     position: relative;
+     left: 45rem;
+     padding: 1rem;
+ }
 
 /*Design tchat*/
 #tchat {
     background-color: #ffc19d;
-    height: 60vh;
     position: relative;
-    top: 25rem;
-    width: 101%;
+    top: 103rem;
+    width: 100%;
+}
+
+/*affichage des messsages*/
+.message {
+    background-color: #03989e;
+    border: 3px solid white;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: 85%;
+    color:white;
+    font-size: 2rem;
+}
+
+/*responsive*/
+@media screen and (max-width: 1000px) {
+
+    #container {
+        width: 100%;
+    }
+
+    .menu {
+        background-image: none;
+        background-color: white;
+    }
+
+    #menuContainer a {
+        color: #ffc19d;
+        font-size: 2rem;
+        background-color: transparent;
+        font-weight: bold;
+        text-decoration-line: none;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-end;
+        margin: 2rem;
+    }
+
+    a {
+        background: linear-gradient(to top, white 0%, #03989e 5px, transparent 5px);
+        background-size: 0 100%;
+        /*opacity: 0.33;*/
+        transition: backgroud-size 0.5s;
+        font-size: large;
+    }
+
+    a:hover {
+        background-size: 100% 100%;
+    }
+
+
+    #tchat {
+        width: 100%;
+        top: 17rem;
+        position: relative;
+        background-color: #ffc19d;
+    }
+
+    /*#usersList {
+        margin-left: 51rem;
+        position: relative;
+        bottom: -4rem;
+        right: 15rem;
+    } */
+
+    #sendMessage {
+        margin-left: 0;
+        position: relative;
+        bottom: 5rem;
+        left: 31rem;
+    }
+
+    #messageToSend {
+        margin: 2rem;
+        width: 25%;
+        height: 9rem;
+        overflow: auto;
+        position: relative;
+        left: 31rem;
+    }
+
+    .message {
+        width: 91%;
+        justify-content: center;
+    }
 }

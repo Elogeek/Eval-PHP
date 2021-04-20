@@ -36,7 +36,7 @@ function getMessages() {
 
         for(let message of messages) {
             messagesAll.innerHTML += `
-                <div class="messages-wrapper">
+                <div class="messages-wrapper" >
                     <p> ${message.user_fk} </p>
                     <p> ${message.date}  </p>  
                     <p class="contentMessage"> ${message.content} </p>
@@ -54,3 +54,25 @@ function getMessages() {
 }
 
 getMessages();
+
+/**
+ * Connect user === click btn s'inscrire
+ */
+function signIn() {
+    let btn = document.querySelector('.userAddBtn');
+    btn.addEventListener('click', e =>
+    e.preventDefault());
+    let window = document.querySelectorAll('.windowConnect');
+    for (let i = 0; i < window.length; i++) {
+        console.log(window);
+    }
+    window.style.display = "flex";
+}
+
+signIn();
+
+/** refresh message tchat*/
+function refreshMessage($id) {
+
+
+}

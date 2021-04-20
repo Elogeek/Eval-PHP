@@ -58,19 +58,15 @@ getMessages();
 /**
  * Connect user === click btn s'inscrire
  */
-function signIn() {
-    let btn = document.querySelector('.userAddBtn');
-    btn.addEventListener('click', e =>
-    e.preventDefault());
-    let window = document.querySelectorAll('.windowConnect');
-    for (let i = 0; i < window.length; i++) {
-        console.log(window);
-    }
-    window.style.display = "flex";
-}
+$('#windowConnect').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+})
 
-signIn();
-
+/*déco === click déconnection
+ */
+$('#windowDeco').on('shown.bs.modal', function () {
+    $('#btnDeco').trigger('focus')
+})
 /** refresh message tchat*/
 function refreshMessage($id) {
 

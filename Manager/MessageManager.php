@@ -13,6 +13,7 @@ class MessageManager
      * Send a message
      * @param string $messageContent
      * @param User $user
+     * @return bool
      */
     public function sendMessages(string $messageContent, User $user): bool {
         // Creating a Mysql date.

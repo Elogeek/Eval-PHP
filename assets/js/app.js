@@ -37,9 +37,10 @@ function getMessages() {
         for(let message of messages) {
             messagesAll.innerHTML += `
                 <div class="messages-wrapper" >
-                    <p> ${message.user_fk} </p>
-                    <p> ${message.date}  </p>  
-                    <p class="contentMessage"> ${message.content} </p>
+                    <i class="fas fa-comment"></i>
+                    <p id="pEmail" > ${message.user}</p>
+                    <p class="contentMessage" style="color: #ffc19d"> a dit : " ${message.content} "</p>
+                    <p id="pDate"> ${message.date}</p>  
                 </div>
             `
         }
@@ -55,20 +56,7 @@ function getMessages() {
 
 getMessages();
 
-/**
- * Connect user === click btn s'inscrire
- */
-$('#windowConnect').on('shown.bs.modal', function () {
-    $('#myInput').trigger('focus')
-})
-
-/*déco === click déconnection
- */
-$('#windowDeco').on('shown.bs.modal', function () {
-    $('#btnDeco').trigger('focus')
-})
-/** refresh message tchat*/
-function refreshMessage($id) {
-
-
-}
+//modal sing in and sign up ===> thanks JQuery multiple modal++++
+$('#modal-1').modal({
+    closeExisting: false
+});

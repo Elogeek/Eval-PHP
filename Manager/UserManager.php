@@ -47,4 +47,20 @@ class UserManager
         return intval(DB::getInstance()->lastInsertId()) !== 0;
     }
 
+
+    public function getUser(int $id): User {
+        $user = new User();
+        $sql = DB::getInstance()->prepare("SELECT * FROM user WHERE id = :id");
+        $sql->bindParam(':id', $id);
+        $sql->execute();
+
+        if ($result = $sql->fetch()) {
+            $user->setId($result['id']);
+            $user->setEmail($result['email']);
+            $user->setPassword($result['password']);
+        }
+        return $user;
+
+    }
+
 }

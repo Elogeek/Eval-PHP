@@ -24,15 +24,19 @@ switch($requestType) {
 
     // Obtention des messages.
     case 'GET':
+        $userManager = new UserManager();
         $messages = $manager->getMessages();
         $response = [];
         foreach($messages as $message) {
-            $response[] = [
-                'id' => $message->getId(),
-                'date' => $message->getDate(),
-                'user_fk' => $message->getUserFk(),
-                'content' => $message->getContent()
-            ];
+            $user = $userManager->getUser($message->getUserFk());
+            if($user->getId()) {
+                $response[] = [
+                    'id' => $message->getId(),
+                    'date' => $message->getDate(),
+                    'user' => $user->getEmail(),
+                    'content' => $message->getContent()
+                ];
+            }
         }
         echo json_encode($response);
         break;

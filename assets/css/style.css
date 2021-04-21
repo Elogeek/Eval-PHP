@@ -20,15 +20,18 @@ body {
     margin: 10px;
     z-index: 1000;
 }
+#wlcCat {
+    float: right;
+    margin-left: 65rem;
+    width: 42%;
+}
 
 /*le menu*/
-.menu {
+.header {
     display: flex;
     justify-content: space-between;
     flex-flow: row nowrap;
     width: 100%;
-    top:0;
-    position: relative;
 }
 
 .cat {
@@ -44,20 +47,78 @@ body {
 }
 
 /*sous-menu*/
-#menuContainer {
+#window {
     position: fixed;
     letter-spacing: 0.2rem;
     margin: 10px;
     right: 5px;
-}
-
-#menuContainer, #windowConnect {
     font-size: 2rem;
 }
 
-/* inscription/connection*/
-.connect, .windowConnect {
-    display: none;
+/*modal-1*/
+#modal-1 a {
+    padding: 2rem;
+}
+
+#modal-1 input {
+    margin: 2rem;
+}
+
+.closeWdw {
+    position: relative;
+    bottom: 6rem;
+    left: 21rem;
+    font-size: 13px;
+}
+
+#close-wdw {
+    position: relative;
+    left: 32rem;
+    top: -1rem;
+}
+
+#openWdw {
+    position: relative;
+    right: 25rem;
+    top: 4rem;
+    font-size: 13px;
+}
+
+#btnOpen {
+    position: relative;
+    left: 3rem;
+    bottom: 1rem;
+}
+
+/*modal-2*/
+#modal-2 input {
+    margin: 2rem;
+}
+
+#close {
+    position: relative;
+    bottom: 7rem;
+    left: 38rem;
+    font-size: 13px;
+}
+
+#btnWdw {
+    position: relative;
+    left: 11rem;
+    top: 2rem;
+}
+
+/* a*/
+a {
+    text-decoration-line: none;
+    color: #ffc19d;
+    background-color: transparent;
+    font-weight: bold;
+}
+
+/*animation a*/
+a:hover {
+    color: #03989e;
 }
 
 /*buttons
@@ -92,21 +153,55 @@ body {
 #tchat {
     background-color: #ffc19d;
     position: relative;
-    top: 36rem;
+    top: 0;
     width: 100%;
     font-size: 2rem;
+    left: 0;
+
 }
 
-/*affichage des messsages*/
+/*affichage des messages*/
 .message {
-    background-color: #03989e;
+    background-color: white;
     border: 3px solid white;
     display: flex;
     flex-flow: column;
     justify-content: center;
-    width: 85%;
+    width: 62%;
     color:white;
     font-size: 2rem;
+    position: relative;
+    top: 3rem;
+    right: 0;
+}
+
+.messages-wrapper {
+    border-radius:  10px 100px / 120px;
+    background: #03989e;
+    background-clip: border-box;
+    width: 55%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem;
+    padding: 2rem;
+    overflow-wrap: anywhere;
+}
+
+#pDate {
+    font-size: 13px;
+}
+
+#pDate, #pEmail {
+    font-style: italic;
+    color: white;
+}
+
+.messages-wrapper i {
+    color: white;
+    position: relative;
+    right: 30rem;
 }
 
 /*responsive*/
@@ -116,6 +211,10 @@ body {
         width: 100%;
     }
 
+    #wlcCat {
+        display: none;
+    }
+
     .menu {
         background-image: none;
         background-color: white;
@@ -123,7 +222,7 @@ body {
 
     #tchat {
         width: 100%;
-        top: 32rem;
+        top: 16rem;
         position: relative;
         background-color: #ffc19d;
     }
@@ -152,12 +251,26 @@ body {
     }
 
     .message {
-        width: 91%;
+        width: 90%;
         justify-content: center;
+        position: relative;
+        top: 1rem;
+        right: 0;
     }
 
-    #cat {
-        display: none;
+    .messages-wrapper {
+        overflow-wrap: anywhere;
+
+    }
+    .messages-wrapper i {
+        color: white;
+        position: relative;
+        right: 22.5rem;
     }
 
+    #btnOpen {
+        position: relative;
+        top: 6rem;
+        left: 3rem;
+    }
 }

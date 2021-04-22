@@ -62,13 +62,7 @@ $('#modal-1').modal({
 });
 
 
-// Connection with Ajax
 
-
-// registration with Ajax
-
-
-// disconnection with Ajax
 
 
 

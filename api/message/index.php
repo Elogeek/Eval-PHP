@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Include.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/include.php';
 
 use App\Entity\User;
 use App\Manager\MessageManager;
@@ -9,7 +9,7 @@ use App\Manager\UserManager;
 
 // FIXME To remove once users are implemented.
 $user = new User();
-$user->setId(1);
+$user->setId("2");
 // Delete lines 10 and 11 once all updated.
 
 

@@ -34,6 +34,21 @@ class DB
     }
 
     /**
+     * the secureData fct returns secure data and insert it into the database.
+     * @param $data
+     * @return string
+     */
+
+    public static function secureData($data): string {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        $data = strip_tags($data);
+        $data = addslashes($data);
+        return trim(intval($data)) ;
+    }
+
+    /**
      * avoid clone by another dev
      */
     public function __clone() {}

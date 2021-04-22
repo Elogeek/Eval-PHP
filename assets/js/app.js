@@ -6,7 +6,7 @@ sendMessageButton.addEventListener('click', function(e) {
     e.preventDefault();
     const xhr = new XMLHttpRequest();
     xhr.onload = function () {
-        // On vérifie si un message d'erreur est prsent.
+        // On vérifie si un message d'erreur est present.
         if(xhr.responseText) {
             const error = JSON.parse(xhr.responseText);
             alert(error);
@@ -60,3 +60,16 @@ getMessages();
 $('#modal-1').modal({
     closeExisting: false
 });
+
+
+// Connection with Ajax
+
+
+// registration with Ajax
+
+
+// disconnection with Ajax
+
+
+
+

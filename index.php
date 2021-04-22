@@ -1,24 +1,6 @@
 <?php
-require_once "Include.php";
-session_start();
-
-if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
-
-    $return = "";
-    $id = "";
-
-    if (isset($_GET['success'])) {
-        $id = "success";
-        switch ($_GET['success']) {
-            case '0':
-                $return = "Vous êtes bien connecté(e) !";
-                break;
-
-        }
-    }
-}
+require_once "include.php";
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -42,11 +24,11 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
             <!-- Modal  -->
             <div id="modal-1" class="modal">
                 <div id="windowConnect">
-                    <input type="email" placeholder=" Email" required>
-                    <input type="password" placeholder="Password" required>
+                    <input type="email" placeholder=" Email"  id="emailConnect"required>
+                    <input type="password" placeholder="Password" id="passwordConnect" required>
                     <a href="#modal-2" rel="modal:open" id="openWdw">Pas encore inscrit?</a>
                 </div>
-                <button type="submit" id="close-wdw"> Me connecter !</button>
+                <button type="submit" id="btnConnect"> Me connecter !</button>
                 <a href="#" rel="modal:close" class="closeWdw">Fermer</a>
             </div>
 
@@ -55,10 +37,10 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
                 <!--modal2-->
                 <div id="modal-2" class="modal">
-                    <div id="singUp">
-                        <input type="email" placeholder=" Email" required>
-                        <input type="password" placeholder="Password" required>
-                        <button type="submit" id="btnWdw"> Valider !</button>
+                    <div id="singWindow">
+                        <input type="email" placeholder=" Email" id="emailSign" required>
+                        <input type="password" placeholder="Password" id="passwordSign" required>
+                        <button type="submit" id="btnSing"> Valider !</button>
                     </div>
                     <div>
                         <a href="#" rel="modal:close" id="close">Fermer</a>
@@ -69,16 +51,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     </div>
 
     <div id="tchat">
-        <!--Users listes
-        <div id="users">
-            <button id="usersList" class="btn btn-rounded btn-primary">Liste des utilisateurs</button>
-            list users tchat
-            <div>
-                <table>
-                    <tbody id="#usersListContent"></tbody>
-                </table>
-            </div>
-        </div>-->
+
         <!--ALL TCHAT here-->
         <div>
             <form method="POST" action="">

@@ -1,23 +1,22 @@
 <?php
-
-require_once $_SERVER['DOCUMENT_ROOT'] . "/DB/DB.php";
-use PDO;
 use App\DB;
+use PDO;
 
 include "include.php";
 
-if(isset($_POST['email']) && isset($_POST['password']) ) {
+if (isset($_POST['email']) && isset($_POST['password'])) {
 
     $email = \DB::secureData($_POST['email']);
-    $password =\DB::secureData(($_POST['password']));
+    $password = \DB::secureData(($_POST['password']));
 
-    // I get the name of the user
+    // get the name of the user
     $stmt = \DB::getInstance()->prepare("SELECT * FROM user WHERE email = '$email'");
     $stmt->execute();
     foreach ($stmt->fetchAll() as $user) {
-        // I check that the password encrypted on my database that I retrieved using the '$ user [' password ']' loop corresponds to the password entered by the user
+        // check that the encrypted password on my database
+        // that i recovered with '$user['password']' matches the password entered by the user
         if (password_verify($password, $user['password'])) {
-            //If the two passwords match then logon and we store user data in a session.
+            //If the two passwords match, then the user can connect so (===> store user data in a session.)
             session_start();
             $_SESSION['id'] = $user['id'];
             $_SESSION['password'] = $password;
@@ -25,12 +24,12 @@ if(isset($_POST['email']) && isset($_POST['password']) ) {
 
             echo "success";
             exit();
-        } else {
+        } /*else {
             echo "error=0";
             exit();
-        }
+        }*/
     }
-} else {
+} /*else {
     echo "error=1";
     exit();
-}
+}*/

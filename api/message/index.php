@@ -54,13 +54,13 @@ switch($requestType) {
 }
 
 /**
- * Return the schools list.
+ * Return the user list.
  * @param UserManager $manager
  * @return false|string
  */
 function getUsers(UserManager $manager): string {
     $response = [];
-    // Obtention des students.
+    // Obtention des users.
     $data = $manager->getUsers();
     foreach($data as $user) {
         /* @var user $user */

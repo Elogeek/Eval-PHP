@@ -157,7 +157,21 @@ a:hover {
     width: 100%;
     font-size: 2rem;
     left: 0;
+}
 
+h1 {
+    color: #03989e;
+    font-weight: bold;
+    position: relative;
+    left: 27rem;
+}
+
+h2 {
+    float: right;
+    top: 2rem;
+    color: #ffc19d;
+    font-weight: bold;
+    margin-bottom: 6rem;
 }
 
 /*affichage des messages*/

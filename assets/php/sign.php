@@ -1,9 +1,9 @@
 <?php
+
 use App\DB;
 use PDO;
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/DB/DB.php";
-include "include.php";
+require_once "include.php";
 
 if (isset($_POST["pseudo"], $_POST["password"], $_POST["email"])) {
 
@@ -23,20 +23,21 @@ if (isset($_POST["pseudo"], $_POST["password"], $_POST["email"])) {
             }
         }
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $min = preg_match('@[a-z]@', $password);
+            $majuscule = preg_match('@[A-Z]@', $password);
+            $minuscule = preg_match('@[a-z]@', $password);
             $number = preg_match('@[0-9]@', $password);
 
-            if ($min && $number && strlen($password) < 5) {
-                $sql = "INSERT INTO user VALUES ($email, $passwordUser)";
+            if ($majuscule && $minuscule && $number && strlen($password) < 5) {
+                $sql = "INSERT INTO user VALUES (NULL,$email, $passwordUser)";
 
-               $request->exec($sql);
+                $request->exec($sql);
                 echo "success";
             }
 
         } else {
-            echo "error=1";
+            echo "error=2";
         }
     }
 } else {
-    echo "error=2";
+    echo "error=0";
 }

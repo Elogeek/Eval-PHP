@@ -15,9 +15,9 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
             case '0':
                 $return = "Vous êtes bien connecté(e) !";
                 break;
+            }
         }
     }
-}
 ?>
 
 <!doctype html>
@@ -36,37 +36,9 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 <div id="container">
     <!--header-->
     <div class="header">
-        <img src="assets/img/back.png" alt="WelcomeCat" id="wlcCat">
+        <h1>Mon tchat</h1>
+        <h2>Vous êtes connecté(e), en tant que <?php echo $_SESSION['email'];?> </h2>
         <img src="assets/img/logo.png" alt="logoSite" id="logo">
-
-        <div id="widow">
-            <!-- Modal  -->
-            <div id="modal-1" class="modal">
-                <div id="windowConnect">
-                    <input type="email" placeholder=" Email"  id="emailConnect"required>
-                    <input type="password" placeholder="Password" id="passwordConnect" required>
-                    <a href="#modal-2" rel="modal:open" id="openWdw">Pas encore inscrit?</a>
-                </div>
-                <button type="submit" id="btnConnect"> Me connecter !</button>
-                <a href="#" rel="modal:close" class="closeWdw">Fermer</a>
-            </div>
-
-            <!-- Link to open the modal -->
-            <button type="submit" id="btnOpen"><a href="#modal-1" rel="modal:open">Se connecter</a></button>
-
-                <!--modal2-->
-                <div id="modal-2" class="modal">
-                    <div id="singWindow">
-                        <input type="email" placeholder=" Email" id="emailSign" required>
-                        <input type="password" placeholder="Password" id="passwordSign" required>
-                        <button type="submit" id="btnSing"> Valider !</button>
-                    </div>
-                    <div>
-                        <a href="#" rel="modal:close" id="close">Fermer</a>
-                    </div>
-                </div>
-
-        </div>
     </div>
 
     <div id="tchat">

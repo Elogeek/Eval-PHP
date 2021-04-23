@@ -61,9 +61,64 @@ $('#modal-1').modal({
     closeExisting: false
 });
 
+// Connect in Ajax
+if ($("#btnConnect")) {
+    $("#windowConnect").click(function () {
+        $.ajax({
+            'type': 'POST',
+            'url': '../assets/php/connect.php',
+            'data': {
+                'email': $("#emailConnect").val(),
+                'password': $("#passwordConnect").val()
+            },
+            'success': function (data) {
+                if(data === "success"){
+                    window.location.href = "tchat.php?success=0";
+                }
+                if (data === "error=0"){
+                    window.location.href = "index.php?error=0";
+                }
+                if (data === "error=2") {
+                    window.location.href = "index.php?error=2";
+                }
+                if (data === "error=1"){
+                    window.location.href = "index.php?error=1";
+                }
+            }
+        });
+    });
+}
 
+// sign in Ajax
+if ($("#btnSing")) {
+    $("#singWindow").click(function () {
+        $.ajax({
+            'type': 'POST',
+            'url': '../assets/php/sign.php',
+            'data': {
+                'password': $("#passwordSign").val(),
+                'email': $("#emailSign").val()
+            },
+            'success': function (data) {
+                if(data === "success") {
+                    window.location.href = "index.php?success=0";
+                }
+                if (data === "error=0") {
+                    window.location.href = "index.php?error=0";
+                }
+                if (data === "error=1") {
+                    window.location.href = "index.php?error=1";
+                }
+                if (data === "error=2") {
+                    window.location.href = "index.php?error=2";
+                }
+            }
+        });
+    });
+}
 
-
+//deco in Ajax
+//voir deco.php
 
 
 

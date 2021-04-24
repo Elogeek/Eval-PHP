@@ -28,7 +28,7 @@ if (isset($_GET['error'])) {
             break;
         case '1':
             $return = "Vous êtes bien déconnectée(e) !";
-            header('location:tchat.php');
+            header('location:index.php');
             break;
     }
 }

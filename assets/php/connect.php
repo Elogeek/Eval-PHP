@@ -1,6 +1,8 @@
 <?php
+
 use App\DB;
 use PDO;
+
 
 include "include.php";
 
@@ -24,12 +26,12 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
             echo "success";
             exit();
-        } /*else {
+        } else {
             echo "error=0";
             exit();
-        }*/
+        }
     }
-} /*else {
+} else {
     echo "error=1";
     exit();
-}*/
+}

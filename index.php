@@ -70,7 +70,8 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     </div>
 
     <div id="tchat">
-
+        <h1>Mon tchat</h1>
+        <h2>Vous êtes connecté(e), en tant que <?php echo $_SESSION['email'];?> </h2>
         <!--ALL TCHAT here-->
         <div>
             <form method="POST" action="">

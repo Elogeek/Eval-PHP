@@ -5,7 +5,7 @@ use App\DB;
 use PDO;
 
 require_once "include.php";
-
+/*
 function userDeconnect (MessageManager $manager, $date, $message) :string {
     //à l'aide de la date du dernier message,si l'user est inactive après 5 min === alors la session se termine,
     //l'user est déco
@@ -22,3 +22,4 @@ function userDeconnect (MessageManager $manager, $date, $message) :string {
 
 userDeconnect();
 
+*/

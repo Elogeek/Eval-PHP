@@ -53,6 +53,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
             <!-- Link to open the modal -->
             <button type="submit" id="btnOpen"><a href="#modal-1" rel="modal:open">Se connecter</a></button>
+            <button type="submit" id="disconnect"> Déconnexion</button>
 
                 <!--modal2-->
                 <div id="modal-2" class="modal">
@@ -70,8 +71,8 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     </div>
 
     <div id="tchat">
-        <h1>Mon tchat</h1>
-        <h2>Vous êtes connecté(e), en tant que <?php echo $_SESSION['email'];?> </h2>
+        <!--<h1>Mon tchat</h1>
+        <h2>Vous êtes connecté(e), en tant que <?php echo $_SESSION['email'];?> </h2>-->
         <!--ALL TCHAT here-->
         <div>
             <form method="POST" action="">

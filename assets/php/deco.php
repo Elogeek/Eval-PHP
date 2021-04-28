@@ -23,3 +23,11 @@ function userDeconnect (MessageManager $manager, $date, $message) :string {
 userDeconnect();
 
 */
+
+session_start();
+// I destroy the variables of our session.
+session_unset();
+// I destroy our session.
+session_destroy();
+
+echo "success";

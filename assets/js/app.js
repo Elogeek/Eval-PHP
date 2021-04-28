@@ -56,7 +56,7 @@ function getMessages() {
 
 getMessages();
 
-//modal sing in and sign up ===> thanks JQuery multiple modal++++
+//modal sing in and sign up ===> thanks JQuery multiple modal :D
 $('#modal-1').modal({
     closeExisting: false
 });
@@ -119,6 +119,20 @@ if ($("#btnSing")) {
 
 //deco in Ajax
 //voir deco.php
+$disconnect = $("#disconnect");
+if ($disconnect) {
+    $disconnect.click(function () {
+        $.ajax({
+            'type': 'GET',
+            'url': '../assets/php/deco.php',
+            'success': function (data) {
+                if(data === "success") {
+                    window.location.href = "index.php?success=1";
+                }
+            }
+        });
+    });
+}
 
 
 

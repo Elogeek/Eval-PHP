@@ -7,12 +7,6 @@ use App\Entity\User;
 use App\Manager\MessageManager;
 use App\Manager\UserManager;
 
-// FIXME To remove once users are implemented.
-$user = new User();
-$user->setId("2");
-// Delete lines 10 and 11 once all updated.
-
-
 header('Content-Type: application/json');
 
 $requestType = $_SERVER['REQUEST_METHOD'];
@@ -32,7 +26,7 @@ switch($requestType) {
             if($user->getId()) {
                 $response[] = [
                     'id' => $message->getId(),
-                    'date' => $message->getDate(),
+                    'date' => (new \DateTime($message->getDate()))->format("\L\\e d-m-y à H:i"),
                     'user' => $user->getEmail(),
                     'content' => $message->getContent()
                 ];
@@ -43,6 +37,9 @@ switch($requestType) {
 
     // Ajout d'un message.
     case 'POST':
+        $user = new User();
+        $user->setId($_SESSION['id']);
+        $user->setEmail($_SESSION['email']);
         $result = $manager->sendMessages($data->message, $user);
         if(!$result) {
             echo json_encode(["error" => "Erreur d'envoi du message"]);

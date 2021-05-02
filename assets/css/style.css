@@ -1,7 +1,7 @@
 * {
-    margin:auto;
-    padding:0;
-    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -10,40 +10,24 @@ html {
 
 body {
     width: 100%;
+    font-size: 2rem;
 }
 
 /*img logo site*/
-/*pas de height sinon l'img s'étire*/
 #logo {
-    width: 10%;
-    position:absolute;
-    margin: 10px;
-    z-index: 1000;
-}
-#wlcCat {
-    float: right;
-    margin-left: 65rem;
-    width: 42%;
+    height: 20rem;
+    margin: 1rem;
 }
 
 /*le menu*/
 .header {
     display: flex;
     justify-content: space-between;
-    flex-flow: row nowrap;
-    width: 100%;
-}
-
-.cat {
-    position: absolute;
 }
 
 /*image*/
 #cat {
     width: 70rem;
-    top: 2rem;
-    position: absolute;
-    left: 42rem;
 }
 
 /*sous-menu*/
@@ -52,7 +36,6 @@ body {
     letter-spacing: 0.2rem;
     margin: 10px;
     right: 5px;
-    font-size: 2rem;
 }
 
 /*modal-1*/
@@ -64,39 +47,16 @@ body {
     margin: 2rem;
 }
 
-.closeWdw {
-    position: relative;
-    bottom: 6rem;
-    left: 21rem;
-    font-size: 13px;
+.closeWdw, #close {
+    font-size: 1.3rem;
 }
 
-#btnConnect {
-    position: relative;
-    left: 32rem;
-    top: -1rem;
-}
-
-#openWdw {
-    position: relative;
-    right: 25rem;
-    top: 4rem;
-    font-size: 13px;
-}
-
-#btnOpen {
-    position: relative;
-    left: 5rem;
-    top: 7rem;
-}
 #btnOpen, #disconnect {
     margin: 1rem;
 }
+
 /*btn deco*/
 #disconnect {
-    position: relative;
-    right: 9rem;
-    top: 3rem;
     color:#ffc19d;
     font-weight: bold;
 }
@@ -106,25 +66,10 @@ body {
     margin: 2rem;
 }
 
-#close {
-    position: relative;
-    bottom: 7rem;
-    left: 38rem;
-    font-size: 13px;
-}
-
-#btnSing{
-    position: relative;
-    left: 11rem;
-    top: 2rem;
-}
-
 /* a*/
 a {
     text-decoration-line: none;
-    color: #ffc19d;
-    background-color: transparent;
-    font-weight: bold;
+    color: black;
 }
 
 /*animation a*/
@@ -132,172 +77,81 @@ a:hover,#disconnect:hover {
     color: #03989e;
 }
 
-/*buttons
-#usersList {
-    margin-left: 69rem;
-    position: relative;
-    bottom: -4rem;
-    right: 15rem;
-
-}*/
-
- #sendMessage {
-    margin-left: 0;
-     position: relative;
-     bottom: 5rem;
-     left: 45rem;
-     font-size: 2rem;
+#message {
+    padding: 2rem;
 }
 
- #messageToSend {
-     margin: 2rem;
-     width: 25%;
-     height: 9rem;
-     overflow: auto;
-     position: relative;
-     left: 45rem;
-     padding: 1rem;
-     font-size: 2rem;
- }
+#sendMessage {
+    padding: 0.8rem;
+}
+
+#messageToSend {
+    width: 100%;
+    padding: 1rem;
+}
 
 /*Design tchat*/
 #tchat {
     background-color: #ffc19d;
-    position: relative;
-    top: 0;
-    width: 100%;
-    font-size: 2rem;
-    left: 0;
 }
-/*
-h1 {
-    color: #03989e;
-    font-weight: bold;
-    position: relative;
-    left: 27rem;
-}
-
-h2 {
-    float: right;
-    top: 2rem;
-    color: #ffc19d;
-    font-weight: bold;
-    margin-bottom: 6rem;
-}
-*/
 
 /*affichage des messages*/
 .message {
     background-color: white;
-    border: 3px solid white;
     display: flex;
-    flex-flow: column;
-    justify-content: center;
-    width: 62%;
+    flex-direction: column;
     color:white;
-    font-size: 2rem;
-    position: relative;
-    top: 3rem;
-    right: 0;
 }
 
 .messages-wrapper {
-    border-radius:  10px 100px / 120px;
+    border-radius:  1rem 10rem / 12rem;
     background: #03989e;
-    background-clip: border-box;
-    width: 55%;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    justify-content: center;
     margin: 2rem;
     padding: 2rem;
-    overflow-wrap: anywhere;
 }
 
-#pDate {
-    font-size: 13px;
+.contentMessage {
+    color: #ffc19d;
+    padding-left: 2rem;
 }
 
-#pDate, #pEmail {
+.italic {
     font-style: italic;
-    color: white;
+    font-size: 1.3rem;
 }
 
-.messages-wrapper i {
-    color: white;
-    position: relative;
-    right: 30rem;
+.bold {
+    font-weight: bold;
 }
 
-/*responsive*/
-@media screen and (max-width: 1000px) {
+.btn {
+    padding: 0.8rem;
+    background-color: #efefef;
+    border: 0.1rem outset rgb(133, 133, 133);
+    text-align: center;
+    user-select: none;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+}
 
-    #container {
-        width: 100%;
-    }
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+}
 
-    #wlcCat {
-        display: none;
-    }
+.flex-row-end {
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
+}
 
-    .menu {
-        background-image: none;
-        background-color: white;
-    }
+.modal input, .modal button {
+    padding: 0.8rem;
+    margin: 2rem;
+}
 
-    #tchat {
-        width: 100%;
-        top: 16rem;
-        position: relative;
-        background-color: #ffc19d;
-    }
-
-    /*#usersList {
-        margin-left: 51rem;
-        position: relative;
-        bottom: -4rem;
-        right: 15rem;
-    } */
-
-    #sendMessage {
-        margin-left: 0;
-        position: relative;
-        bottom: 5rem;
-        left: 31rem;
-    }
-
-    #messageToSend {
-        margin: 2rem;
-        width: 25%;
-        height: 9rem;
-        overflow: auto;
-        position: relative;
-        left: 31rem;
-    }
-
-    .message {
-        width: 90%;
-        justify-content: center;
-        position: relative;
-        top: 1rem;
-        right: 0;
-    }
-
-    .messages-wrapper {
-        overflow-wrap: anywhere;
-
-    }
-    .messages-wrapper i {
-        color: white;
-        position: relative;
-        right: 22.5rem;
-    }
-
-    #btnOpen {
-        position: relative;
-        top: 7rem;
-        left: 5rem;
-    }
-
+h3 {
+    color: white;
+    padding-top: 2rem;
+    padding-left: 2rem;
 }

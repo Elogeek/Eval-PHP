@@ -3,21 +3,6 @@ require_once "include.php";
 
 session_start();
 
-if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
-    $_SESSION['email'] = $_POST['email'];
-
-    $return = "";
-    $id = "";
-
-    if (isset($_GET['success'])) {
-        $id = "success";
-        switch ($_GET['success']) {
-            case '0':
-                $return = "Vous êtes bien connecté(e) !";
-                break;
-        }
-    }
-}
 ?>
 
 <!doctype html>
@@ -35,53 +20,57 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
 <div id="container">
     <!--header-->
+
     <div class="header">
-        <img src="assets/img/back.png" alt="WelcomeCat" id="wlcCat">
         <img src="assets/img/logo.png" alt="logoSite" id="logo">
-
-        <div id="widow">
-            <!-- Modal  -->
-            <div id="modal-1" class="modal">
-                <div id="windowConnect">
-                    <input type="email" placeholder=" Email"  id="emailConnect"required>
-                    <input type="password" placeholder="Password" id="passwordConnect" required>
-                    <a href="#modal-2" rel="modal:open" id="openWdw">Pas encore inscrit?</a>
-                </div>
-                <button type="submit" id="btnConnect"> Me connecter !</button>
-                <a href="#" rel="modal:close" class="closeWdw">Fermer</a>
-            </div>
-
-            <!-- Link to open the modal -->
-            <button type="submit" id="btnOpen"><a href="#modal-1" rel="modal:open">Se connecter</a></button>
-            <button type="submit" id="disconnect"> Déconnexion</button>
-
-                <!--modal2-->
-                <div id="modal-2" class="modal">
-                    <div id="singWindow">
-                        <input type="email" placeholder=" Email" id="emailSign" required>
-                        <input type="password" placeholder="Password" id="passwordSign" required>
-                        <button type="submit" id="btnSing"> Valider !</button>
-                    </div>
-                    <div>
-                        <a href="#" rel="modal:close" id="close">Fermer</a>
-                    </div>
-                </div>
-
-        </div>
+        <img src="assets/img/back.png" alt="WelcomeCat" id="wlcCat">
     </div>
 
     <div id="tchat">
-        <!--<h1>Mon tchat</h1>
-        <h2>Vous êtes connecté(e), en tant que <?php echo $_SESSION['email'];?> </h2>-->
-        <!--ALL TCHAT here-->
-        <div>
-            <form method="POST" action="">
-                <div id="message">
-                    <textarea name="message" id="messageToSend" placeholder=" Tapez votre message ici ! " maxlength="500"></textarea>
+        <h3><?= isset($_SESSION['email']) ? 'Vous êtes connecté(e) en tant que ' . $_SESSION['email'] : "Vous n'êtes pas connecté" ?> </h3>
+
+
+            <div id="message">
+                <textarea name="message" id="messageToSend" placeholder=" Tapez votre message ici ! " maxlength="500"></textarea>
+                <div class="flex-row">
                     <input type="submit" name="submit" value="Envoyez votre message !" id="sendMessage" />
+                    <?php
+                    if(!isset($_SESSION['email'])) { ?>
+                        <div class="flex-row-end">
+                            <!-- Link to open the modal -->
+                            <a class="btn" href="#modal-1" rel="modal:open" id="connect">Se connecter</a>
+                        </div> <?php
+                    } ?>
                 </div>
-            </form>
-        </div>
+
+                <?php
+                if(!isset($_SESSION['email'])) { ?>
+                    <div>
+                        <!-- Modal  -->
+                        <div id="modal-1" class="modal">
+                            <div id="windowConnect">
+                                <input type="email" placeholder=" Email"  id="emailConnect"required>
+                                <input type="password" placeholder="Password" id="passwordConnect" required>
+                            </div>
+                            <button type="submit" id="btnConnect"> Me connecter !</button>
+                            <a href="#modal-2" rel="modal:open" id="openWdw">Pas encore inscrit?</a>
+                        </div>
+
+                        <!--modal2-->
+                        <div id="modal-2" class="modal">
+                            <div id="singWindow">
+                                <input type="email" placeholder=" Email" id="emailSign" required>
+                                <input type="password" placeholder="Password" id="passwordSign" required>
+                                <button type="submit" id="btnSing"> Valider !</button>
+                            </div>
+                        </div>
+                    </div> <?php
+                }
+                ?>
+            </div>
+
+
+
         <!--display messages chat here-->
         <div class="message"></div>
     </div>

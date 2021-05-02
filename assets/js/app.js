@@ -18,7 +18,7 @@ sendMessageButton.addEventListener('click', function(e) {
         'message': document.querySelector('#messageToSend').value
     }
 
-    xhr.open('POST', '/api/message');
+    xhr.open('POST', '/api/message.php');
     xhr.send(JSON.stringify(data));
 });
 
@@ -37,17 +37,16 @@ function getMessages() {
         for(let message of messages) {
             messagesAll.innerHTML += `
                 <div class="messages-wrapper" >
-                    <i class="fas fa-comment"></i>
-                    <p id="pEmail" > ${message.user}</p>
-                    <p class="contentMessage" style="color: #ffc19d"> a dit : " ${message.content} "</p>
-                    <p id="pDate"> ${message.date}</p>  
+                    <i class="fas fa-comment"></i> <span class="italic bold"> ${message.user}</span>
+                    <span class="italic"> ${message.date}</span> 
+                    <p class="contentMessage"> ${message.content}</p> 
                 </div>
             `
         }
     };
 
     // La récupération se fait en get
-    xhr.open('GET', '/api/message');
+    xhr.open('GET', '/api/message.php');
     xhr.send();
 
     // Load messages at 5 second intervals
@@ -57,82 +56,64 @@ function getMessages() {
 getMessages();
 
 //modal sing in and sign up ===> thanks JQuery multiple modal :D
-$('#modal-1').modal({
-    closeExisting: false
-});
+const modal = $('#modal-1');
+if(modal) {
+    modal.modal({
+        closeExisting: false
+    });
+}
 
 // Connect in Ajax
-if ($("#btnConnect")) {
-    $("#windowConnect").click(function () {
-        $.ajax({
-            'type': 'POST',
-            'url': '../assets/php/connect.php',
-            'data': {
-                'email': $("#emailConnect").val(),
-                'password': $("#passwordConnect").val()
-            },
-            'success': function (data) {
-                if(data === "success"){
-                    window.location.href = "tchat.php?success=0";
-                }
-                if (data === "error=0"){
-                    window.location.href = "index.php?error=0";
-                }
-                if (data === "error=2") {
-                    window.location.href = "index.php?error=2";
-                }
-                if (data === "error=1"){
-                    window.location.href = "index.php?error=1";
+const btnConnect = document.getElementById('btnConnect');
+if(btnConnect) {
+    btnConnect.addEventListener('click', function () {
+        const xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            // Fonction appelée quand tout est reçu.
+            const response = JSON.parse(xhr.responseText);
+            if(response.hasOwnProperty('result')) {
+                switch(response.result) {
+                    case -1:
+                        // Affiche un message d'erreur de connexion dans la fenetre modal de connection.
+                        break;
+                    case 1:
+                        document.getElementById('modal-1').remove();
+                        document.querySelectorAll('.jquery-modal').forEach(t => t.remove());
+                        document.getElementById('connect').remove();
+                        break;
                 }
             }
-        });
+        };
+
+        const data = {
+            'email': document.getElementById('emailConnect').value,
+            'password': document.getElementById('passwordConnect').value
+        };
+
+        // La récupération se fait en get
+        xhr.open('POST', '/api/connect.php');
+        xhr.send(JSON.stringify(data));
     });
 }
 
-// sign in Ajax
-if ($("#btnSing")) {
-    $("#singWindow").click(function () {
-        $.ajax({
-            'type': 'POST',
-            'url': '../assets/php/sign.php',
-            'data': {
-                'password': $("#passwordSign").val(),
-                'email': $("#emailSign").val()
-            },
-            'success': function (data) {
-                if(data === "success") {
-                    window.location.href = "index.php?success=0";
-                }
-                if (data === "error=0") {
-                    window.location.href = "index.php?error=0";
-                }
-                if (data === "error=1") {
-                    window.location.href = "index.php?error=1";
-                }
-                if (data === "error=2") {
-                    window.location.href = "index.php?error=2";
-                }
-            }
-        });
+// Connect in Ajax
+const btnSign = document.getElementById('btnSing');
+if(btnSign) {
+    btnSign.addEventListener('click', function () {
+        const xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            // Fonction appelée quand tout est reçu.
+            const response = JSON.parse(xhr.responseText);
+            console.log(response.message);
+        };
+
+        const data = {
+            'email': document.getElementById('emailSign').value,
+            'password': document.getElementById('passwordSign').value
+        };
+
+        // La récupération se fait en get
+        xhr.open('POST', '/api/sign.php');
+        xhr.send(JSON.stringify(data));
     });
 }
-
-//deco in Ajax
-//voir deco.php
-$disconnect = $("#disconnect");
-if ($disconnect) {
-    $disconnect.click(function () {
-        $.ajax({
-            'type': 'GET',
-            'url': '../assets/php/deco.php',
-            'success': function (data) {
-                if(data === "success") {
-                    window.location.href = "index.php?success=1";
-                }
-            }
-        });
-    });
-}
-
-
-

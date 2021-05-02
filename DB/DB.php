@@ -5,7 +5,7 @@ class DB
     private string $host = 'localhost';
     private string $db = 'eval';
     private string $user = 'root';
-    private string $password = 'dev';
+    private string $password = '';
     private static ?PDO $dbInstance = null;
 
     /**
@@ -40,12 +40,11 @@ class DB
      */
 
     public static function secureData($data): string {
-        $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
         $data = strip_tags($data);
         $data = addslashes($data);
-        return trim(intval($data)) ;
+        return trim($data);
     }
 
     /**

@@ -55,7 +55,7 @@ function getMessages() {
 
 getMessages();
 
-//modal sing in and sign up ===> thanks JQuery multiple modal :D
+//modal sing in and sign up
 const modal = $('#modal-1');
 if(modal) {
     modal.modal({
@@ -74,6 +74,9 @@ if(btnConnect) {
             if(response.hasOwnProperty('result')) {
                 switch(response.result) {
                     case -1:
+                        let div = document.createElement('div');
+                        div.innerHTML = "Veuillez réessayer. ";
+                        modal.append(div);
                         // Affiche un message d'erreur de connexion dans la fenetre modal de connection.
                         break;
                     case 1:
@@ -104,7 +107,20 @@ if(btnSign) {
         xhr.onload = function () {
             // Fonction appelée quand tout est reçu.
             const response = JSON.parse(xhr.responseText);
-            console.log(response.message);
+            switch(response.result) {
+                case -1:
+                    let div2 = document.createElement('div');
+                    div2.innerHTML = response.message;
+                    modal.append(div2);
+                    // Affiche un message d'erreur de connexion dans la fenetre modal de connection.
+                    break;
+                case 1:
+                    document.getElementById('modal-1').remove();
+                    document.querySelectorAll('.jquery-modal').forEach(t => t.remove());
+                    document.getElementById('connect').remove();
+                    break;
+            }
+
         };
 
         const data = {

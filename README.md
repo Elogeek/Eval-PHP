@@ -1,2 +1,2 @@
 # Eval-PHP
-make a  simple chat in PHP
+make a  simple chat in request Ajax
